@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <canvas width="600" height="400"></canvas>
+    <script>
+        let tela = document.querySelector('canvas');
+        let color = document.querySelector('input');
+        let pincel = tela.getContext("2d");
+
+        pincel.fillStyle = 'lightgray';
+        pincel.fillRect(0, 0, 600, 400);
+
+
+        function desenhaCirculo(x, y, r, color) {
+            pincel.fillStyle = color;
+            pincel.beginPath();
+            pincel.arc(x, y, r, 0, 2 * Math.PI);
+            pincel.fill();
+        }
+        let raio = 10;
+        desenhaCirculo(300, 200, raio + 20, 'red'); // maior círculo
+        desenhaCirculo(300, 200, raio + 10, 'white');
+        desenhaCirculo(300, 200, raio, 'red'); // menor circulo
+
+        let xAlvo = 300;
+        let yAlvo = 200;
+
+        tela.onclick = (evento) => {
+            let x = evento.pageX - tela.offsetLeft;
+            let y = evento.pageY - tela.offsetTop;
+
+            if (x <= xAlvo + raio && x >= xAlvo - raio && y <= yAlvo + raio && y >= yAlvo - raio) {
+                console.log('X');
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
