@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <canvas width="600" height="400"></canvas>
+    <script>
+        let tela = document.querySelector('canvas');
+        let pincel = tela.getContext("2d");
+
+        pincel.fillStyle = 'lightgray';
+        pincel.fillRect(0, 0, 600, 400);
+
+        function limpaTela() {
+            pincel.clearRect(0,0, 600, 400);
+        }
+
+
+        function desenhaCirculo(x, y, r) {
+            pincel.fillStyle = 'blue';
+            pincel.beginPath();
+            pincel.arc(x, y, r, 0, 2 * Math.PI);
+            pincel.fill();
+        }
+
+        let x = 20;
+        let sentido = 1;
+        function atualizaTela() {
+            limpaTela();
+            desenhaCirculo(x, 20, 10);
+            if(x >= 600) {
+                sentido = -1;
+            } else if (x <= 0) {
+                sentido = 1;
+            }
+            x += sentido;
+        }
+ 
+        setInterval(atualizaTela, 16);
+ 
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
